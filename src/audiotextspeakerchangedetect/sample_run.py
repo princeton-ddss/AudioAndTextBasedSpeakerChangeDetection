@@ -2,7 +2,7 @@
 Sample File to Run Speaker Change Detection Models Without Existing Llama2 output
 '''
 
-from audiotextspeakerchangedetect.run_ensemble_audio_text_based_speaker_change_detection import run_ensemble_audio_text_based_speaker_change_detection
+from audiotextspeakerchangedetect.run_ensemble_audio_text_based_speaker_change_detection import run_ensemble_audio_text_based_speaker_change_detection_model
 
 # Specify Inputs
 detection_models =  ['pyannote', 'clustering', 'nlp', 'llama2-70b']
@@ -21,7 +21,7 @@ detection_llama2_output_path =  None # No existing llama2 output
 temp_output_path = '/scratch/gpfs/jf3375/test/temp'
 ensemble_voting = ['majority', 'unanimity']
 
-run_ensemble_audio_text_based_speaker_change_detection(detection_models, min_speakers, max_speakers,
+run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, min_speakers, max_speakers,
                                                            audio_file_input_path, audio_file_input_name,
                                                            transcription_input_path, transcription_file_input_name,
                                                            detection_output_path,  hf_access_token,

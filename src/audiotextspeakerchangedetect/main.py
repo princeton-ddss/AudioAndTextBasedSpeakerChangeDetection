@@ -5,7 +5,7 @@ from SpeakerChangeDetection.speaker_change_detection_main_function import run_sp
 from EnsembleSpeakerChangeDetection.ensemble_detection import ensemble_detection
 
 
-def run_ensemble_audio_text_based_speaker_change_detection(detection_models, min_speakers, max_speakers,
+def run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, min_speakers, max_speakers,
                                                            audio_file_input_path, audio_file_input_name,
                                                            transcription_input_path, transcription_file_input_name,
                                                            detection_output_path,  hf_access_token,

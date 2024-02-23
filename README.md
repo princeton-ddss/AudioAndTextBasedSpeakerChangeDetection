@@ -1,5 +1,5 @@
 ## Audiotextspeakerchangedetect ##
-Audiotextspeakerchangedetect is a Python package to detect speaker change by analyzing both audio and text features.
+**Audiotextspeakerchangedetect** is a Python package to detect speaker change by analyzing both audio and text features.
 
 The package develops and applies Large Language Models and the Rule-based NLP Model to detect speaker change based on text features. 
 
@@ -31,7 +31,7 @@ python -m venv <envname>
 source <envname>/bin/activate
 ```
 
-## Install `AudioAndTextBasedSpeakerChangeDetection` 
+## Install **Audiospeakerchangedetect** 
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
@@ -60,20 +60,26 @@ snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= <downlo
 
 ### Download PyAnnotate Models using Git Large File Storage (LFS)
 
-PyAnnotate models are already in the models directory of the current Repo AudioAndTextBasedSpeakerChangeDetection. 
+PyAnnotate models are already in the **models** folder of the current repo. 
 
-To use the PyAnnotate, please replace <local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in models/pyannote3.1/Diarization/config.yaml and
-models/pyannote3.1/Segmentation/config.yaml.
+To use the PyAnnotate models, please replace <local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in **models/pyannote3.1/Diarization/config.yaml** and
+**models/pyannote3.1/Segmentation/config.yaml**.
 
 
 ## Usage
 The audio-and-text-based ensemble speaker change detection model could be applied to get speaker change detection results by running only one function.
-The function is run_ensemble_audio_text_based_speaker_change_detection in run_ensemble_audio_text_based_speaker_change_detection.py.
+The function is **run_ensemble_audio_text_based_speaker_change_detection_model** in src/audiotextspeakerchangedetect/main.py.
 Please view the function description inside the Python file.
 Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the main repo folder.
 ```
-from AudioAndTextBasedSpeakerChangeDetection. 
+from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 
+run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, min_speakers, max_speakers,
+                                                           audio_file_input_path, audio_file_input_name,
+                                                           transcription_input_path, transcription_file_input_name,
+                                                           detection_output_path,  hf_access_token,
+                                                           llama2_model_path, pyannote_model_path, device,
+                                                           detection_llama2_output_path, temp_output_path, ensemble_voting)
 ```
 
 
