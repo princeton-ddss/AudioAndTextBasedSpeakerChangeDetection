@@ -1,4 +1,3 @@
-import pandas as pd
 def get_main_question(whisper_df_cut, main_question_bgn, examples = None):
     whisper_data = '{"conversation":[\n'
     segmentids = list(whisper_df_cut['segmentid'])

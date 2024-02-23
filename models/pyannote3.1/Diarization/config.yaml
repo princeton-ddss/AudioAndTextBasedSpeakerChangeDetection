@@ -4,10 +4,10 @@ pipeline:
   name: pyannote.audio.pipelines.SpeakerDiarization
   params:
     clustering: AgglomerativeClustering
-    embedding: /Users/jf3375/PycharmProjects/SpeechMLPipeline/models/Pyannote3.1/Embedding/pytorch_model.bin
+    embedding: <local_path>/AudioAndTextBasedSpeakerChangeDetection>/models/Pyannote3.1/Embedding/pytorch_model.bin
     embedding_batch_size: 32
     embedding_exclude_overlap: true
-    segmentation: //Users/jf3375/PycharmProjects/SpeechMLPipeline/models/Pyannote3.1/Segmentation/pytorch_model.bin
+    segmentation: <local_path>/AudioAndTextBasedSpeakerChangeDetection>/models/Pyannote3.1/Segmentation/pytorch_model.bin
     segmentation_batch_size: 32
 
 params:

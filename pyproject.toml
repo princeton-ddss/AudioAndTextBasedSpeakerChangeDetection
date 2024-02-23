@@ -1,12 +1,12 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
-[tool.hatch.build.targets.wheel]
-sources = ["src"] # From which folder we start to build packages
+[tool.setuptools.packages.find]
+where = ["src"] # From which folder we start to build packages
 
 [project]
-name = "textbasedspeakerchangedetection"
+name = "audioandtextbasedspeakerchangedetection"
 version = "1.0.0" # Set version as fixed
 authors = [
   { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
@@ -20,11 +20,19 @@ classifiers = [ # Show basic information of packages
     "Operating System :: OS Independent",
 ]
 dependencies=[ # Would automatically install these three packages when we build and install our package using pip install -e .
-    "torch", #for specific package version: numpy==1.2.62, numpy>=1.2.62
+    "torch",
     "huggingface_hub",
-    "spacy"
+    "spacy",
+    "resemblyzer",
+    "spectralcluster",
+    "transformers",
+    "pyannote.audio==3.1.1",
+    "pyannote.core==5.0.0",
+    "pyannote.database==5.0.1",
+    "pyannote.metrics==3.2.1",
+    "pyannote.pipeline==3.0.1"
 ]
 
 [project.urls] # Helpful Links Related to Package
-"Homepage" = "https://github.com/princeton-ddss/TextBasedSpeakerChangeDetection"
+"Homepage" = "https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection"
 

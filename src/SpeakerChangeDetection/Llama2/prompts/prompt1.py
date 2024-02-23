@@ -1,4 +1,3 @@
-import pandas as pd
 # Set up prompt
 # Five typical examples are enough for few shot learning
 # ~ 4000 examples are needed for the fine-tuning

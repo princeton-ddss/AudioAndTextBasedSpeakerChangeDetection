@@ -25,14 +25,18 @@ In the end, the ensemble audio-text based speaker change detection model is buil
 The evaluation module is also developed inside package to evaluate the speaker change detection models performance by using SegmentationPrecision,
 SegmentationRecall, SegmentationCoverage, and SegmentationPurity.
 
-
+## Create New Python Environment to Avoid Packages Versions Conflict If Needed
+```
+python -m venv <envname>
+source <envname>/bin/activate
+```
 
 ## Install `AudioAndTextBasedSpeakerChangeDetection` 
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
 cd <.../AudioAndTextBasedSpeakerChangeDetection>
-pip install -e .
+pip install .
 ```
 
 ## Download Models Offline to Run Them without Internet Connection
@@ -49,10 +53,11 @@ login(token=<hf_access_token>)
 snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= os.path.join(<download_model_local_path>, <model_folder>))
 ```
 
-### Download PyAnnote Models using Git Large File Storage (LFS)
+### Download PyAnnotate Models using Git Large File Storage (LFS)
 
-PyAnnote models are already in the models directory of the current Repo AudioAndTextBasedSpeakerChangeDetection. To use them, please replace
-<local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in models/pyannote3.1/Diarization/config.yaml and
+PyAnnotate models are already in the models directory of the current Repo AudioAndTextBasedSpeakerChangeDetection. 
+
+To use the PyAnnotate, please replace <local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in models/pyannote3.1/Diarization/config.yaml and
 models/pyannote3.1/Segmentation/config.yaml.
 
 

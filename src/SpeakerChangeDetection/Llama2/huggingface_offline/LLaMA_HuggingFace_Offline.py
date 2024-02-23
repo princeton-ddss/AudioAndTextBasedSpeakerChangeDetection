@@ -8,6 +8,7 @@ import os
 import torch
 import gc
 from huggingface_hub import snapshot_download
+import transformers
 from transformers import AutoModelForCausalLM
 
 def get_full_prompt(systemprompt,  main_question, questions_answers_dict = None,
