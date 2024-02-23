@@ -31,7 +31,7 @@ python -m venv <envname>
 source <envname>/bin/activate
 ```
 
-## Install **Audiospeakerchangedetect** 
+## Install **Audiotextspeakerchangedetect** 
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
@@ -70,7 +70,7 @@ To use the PyAnnotate models, please replace <local_path> with the local parent 
 The audio-and-text-based ensemble speaker change detection model could be applied to get speaker change detection results by running only one function.
 The function is **run_ensemble_audio_text_based_speaker_change_detection_model** in src/audiotextspeakerchangedetect/main.py.
 Please view the function description inside the Python file.
-Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the main repo folder.
+Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the src/audiotextspeakerchangedetect.
 ```
 from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 

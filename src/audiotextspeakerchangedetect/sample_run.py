@@ -2,7 +2,7 @@
 Sample File to Run Speaker Change Detection Models Without Existing Llama2 output
 '''
 
-from audiotextspeakerchangedetect.run_ensemble_audio_text_based_speaker_change_detection import run_ensemble_audio_text_based_speaker_change_detection_model
+from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 
 # Specify Inputs
 detection_models =  ['pyannote', 'clustering', 'nlp', 'llama2-70b']
