@@ -20,7 +20,9 @@ classifiers = [ # Show basic information of packages
     "Operating System :: OS Independent",
 ]
 dependencies=[ # Would automatically install these three packages when we build and install our package using pip install -e .
+    "accelerate",
     "torch",
+    "torchvision",
     "huggingface_hub",
     "spacy",
     "resemblyzer",

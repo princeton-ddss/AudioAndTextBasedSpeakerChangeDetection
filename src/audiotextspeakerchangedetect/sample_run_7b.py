@@ -5,7 +5,7 @@ Sample File to Run Speaker Change Detection Models Without Existing Llama2 outpu
 from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 
 # Specify Inputs
-detection_models =  ['pyannote', 'clustering', 'nlp', 'llama2-70b']
+detection_models =  ['pyannote', 'clustering', 'nlp', 'llama2-7b']
 min_speakers = 2
 max_speakers = 10
 audio_file_input_path = '/scratch/gpfs/jf3375/test/input'

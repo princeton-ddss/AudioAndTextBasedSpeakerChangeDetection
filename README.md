@@ -20,10 +20,8 @@ These human-specified rules are developed by analyzing OpenAI Whisper transcript
 
 Besides text features, audio features are used to detect speaker change via the widely used clustering method, PyAnnotate and Spectral Clustering.
 
-In the end, the ensemble audio-text based speaker change detection model is built by aggregating predictions across all the speaker change detection models via voting method.
-
-The evaluation module is also developed inside package to evaluate the speaker change detection models performance by using SegmentationPrecision,
-SegmentationRecall, SegmentationCoverage, and SegmentationPurity.
+In the end, tge Ensemble Audio-and-text-based Speaker Change Detection Model is built by aggregating predictions across all the speaker change detection models. The voting methods would be used to ensemble the speaker change detection models above except for Rule-based NLP model.
+The predictions would be finally corrected by Rule-based NLP model as final predictions.
 
 ## Create New Python Environment to Avoid Packages Versions Conflict If Needed
 ```
@@ -47,7 +45,7 @@ python -m spacy download en_core_web_lg
 
 ### Download Llama2 Model by Running Codes below in Python
 <hf_access_token> is the access token to Hugging Face.
-Please create a Hugging Face account (https://huggingface.co/) if it does not exist.  
+Please create a [Hugging Face account](https://huggingface.co/) if it does not exist.  
 The new access token could be created by following the [instructions](https://huggingface.co/docs/hub/en/security-tokens).
 
 <download_model_path> is the local path where the downloaded Llama2 model would be saved.
@@ -82,6 +80,10 @@ run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, m
                                                            detection_llama2_output_path, temp_output_path, ensemble_voting)
 ```
 
+## Models Evaluation Results
+Evaluation Dataset
+Evaluation Metric
+The audio-and-text-based ensemble speaker change detection model 
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

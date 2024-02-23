@@ -10,7 +10,7 @@ from .prompts.prompt1 import systemprompt, main_question_bgn, examples
 from .prompts.prompt1_template import get_main_question
 
 def llama2_speakerchangedetection(whisper_df,
-                          llama_model_path, llama_model_size='7b', device_map ='auto', torch_dtype = torch.float16, get_full_prompt=get_full_prompt,
+                          llama_model_path, llama_model_size='70b', device_map ='auto', torch_dtype = torch.float16, get_full_prompt=get_full_prompt,
                            systemprompt=systemprompt, main_question_bgn=main_question_bgn, examples=examples, get_main_question=get_main_question):
 
     # set llama_model_folder_name based on llama_model_size
