@@ -27,11 +27,33 @@ SegmentationRecall, SegmentationCoverage, and SegmentationPurity.
 
 
 
-## Install Package named `packageworkshop` and its dependencies
+## Install Package named `AudioAndTextBasedSpeakerChangeDetection` 
 ```
+git lfs install
+git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
 cd <.../AudioAndTextBasedSpeakerChangeDetection>
 pip install -e .
 ```
+
+## Download Models Offline to Run Them without Internet Connection
+Download Spacy NLP Model by Running Commands below in Terminal
+```
+python -m spacy download en_core_web_lg
+```
+
+Download Llama2 Model by Running Codes below in Python
+```
+from huggingface_hub import snapshot_download, login
+
+login(token=<hf_access_token>)
+snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= os.path.join(<download_model_local_path>, <model_folder>))
+```
+
+Download PyAnnote Models using Git Large File Storage (LFS)
+PyAnnote models are already in the model directory of the current Repo AudioAndTextBasedSpeakerChangeDetection. To use them, please replace
+<local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in models/pyannote3.1/Diarization/config.yaml and
+models/pyannote3.1/Segmentation/config.yaml.
+
 
 ## Usage
 ```python
