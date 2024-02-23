@@ -1,5 +1,7 @@
-## SpeechMLPipeline #
-TextBasedSpeakerChangeDetection is a Python package to detect speaker change by analyzing textual features via Large Language Models and the Rule-based NLP Model. 
+## AudioAndTextBasedSpeakerChangeDetection #
+AudioAndTextBasedSpeakerChangeDetection is a Python package to detect speaker change by analyzing both audio and text features.
+
+The package develops and applies Large Language Models and the Rule-based NLP Model to detect speaker change based on text features. 
 
 Currently, the package provides the main function so users could directly pass transcriptions to apply Llama2-70b to detect speaker change. The prompt of speaker change detection 
 is developed meticulously to ensure that Llama2 could understand its role of detecting speaker change, perform the speaker change detection for almost every segment, and return the answer in a standardized JSON format. 
@@ -16,7 +18,26 @@ These human-specified rules are developed by analyzing OpenAI Whisper transcript
  * If the sentence ends with ?, and its following sentence ends with . The speaker changes in the next segment.
  * If there is the conjunction word in the beginning of segment. The speaker does not change in this segment.
 
+Besides text features, audio features are used to detect speaker change via the widely used clustering method, PyAnnotate and Spectral Clustering.
+
+In the end, the ensemble audio-text based speaker change detection model is built by aggregating predictions across all the speaker change detection models via voting method.
+
 The evaluation module is also developed inside package to evaluate the speaker change detection models performance by using SegmentationPrecision,
 SegmentationRecall, SegmentationCoverage, and SegmentationPurity.
 
 
+
+## Install Package named `packageworkshop` and its dependencies
+```
+cd <.../AudioAndTextBasedSpeakerChangeDetection>
+pip install -e .
+```
+
+## Usage
+```python
+import numpy as np
+from packageworkshop.rescale import rescale
+
+# rescales over 0 to 1
+rescale(np.linspace(0, 100, 5))
+```
