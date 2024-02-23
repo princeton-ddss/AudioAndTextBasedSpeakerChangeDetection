@@ -1,7 +1,7 @@
 pipeline:
   name: pyannote.audio.pipelines.VoiceActivityDetection
   params:
-    segmentation:<local_path>/AudioAndTextBasedSpeakerChangeDetection>/models/Pyannote3.1/Segmentation/pytorch_model.bin
+    segmentation:<local_path>/AudioAndTextBasedSpeakerChangeDetection/models/Pyannote3.1/Segmentation/pytorch_model.bin
 
 params:
   min_duration_off: 0.09791355693027545

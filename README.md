@@ -1,5 +1,5 @@
-## AudioAndTextBasedSpeakerChangeDetection ##
-AudioAndTextBasedSpeakerChangeDetection is a Python package to detect speaker change by analyzing both audio and text features.
+## Audiotextspeakerchangedetect ##
+Audiotextspeakerchangedetect is a Python package to detect speaker change by analyzing both audio and text features.
 
 The package develops and applies Large Language Models and the Rule-based NLP Model to detect speaker change based on text features. 
 
@@ -46,11 +46,16 @@ python -m spacy download en_core_web_lg
 ```
 
 ### Download Llama2 Model by Running Codes below in Python
+<hf_access_token> is the access token to Hugging Face.
+Please create a Hugging Face account (https://huggingface.co/) if it does not exist.  
+The new access token could be created by following the [instructions](https://huggingface.co/docs/hub/en/security-tokens).
+
+<download_model_path> is the local path where the downloaded Llama2 model would be saved.
 ```
 from huggingface_hub import snapshot_download, login
 
 login(token=<hf_access_token>)
-snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= os.path.join(<download_model_local_path>, <model_folder>))
+snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= <download_model_path>)
 ```
 
 ### Download PyAnnotate Models using Git Large File Storage (LFS)
@@ -62,10 +67,15 @@ models/pyannote3.1/Segmentation/config.yaml.
 
 
 ## Usage
-```python
-import numpy as np
-from packageworkshop.rescale import rescale
-
-# rescales over 0 to 1
-rescale(np.linspace(0, 100, 5))
+The audio-and-text-based ensemble speaker change detection model could be applied to get speaker change detection results by running only one function.
+The function is run_ensemble_audio_text_based_speaker_change_detection in run_ensemble_audio_text_based_speaker_change_detection.py.
+Please view the function description inside the Python file.
+Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the main repo folder.
 ```
+from AudioAndTextBasedSpeakerChangeDetection. 
+
+```
+
+
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

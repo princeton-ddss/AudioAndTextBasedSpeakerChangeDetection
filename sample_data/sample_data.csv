@@ -1,0 +1,67 @@
+start,end,text,file_name,speaker,segmentid,language
+0.0,0.98,Wasn't my fault.,sample_data,,0,en
+1.0,3.68,I have seen you thread the needle a million times.,sample_data,,1,en
+3.68,4.72,You never miss.,sample_data,,2,en
+4.72,5.86,"Yeah, I must be getting old.",sample_data,,3,en
+5.86,7.08,Why don't you just admit it?,sample_data,,4,en
+7.08,8.22,You never liked Phil.,sample_data,,5,en
+8.22,8.92,Put that down.,sample_data,,6,en
+8.92,10.16,You do not get a cookie.,sample_data,,7,en
+10.16,10.94,I like Phil.,sample_data,,8,en
+10.94,14.16,"It's just that sometimes he tries too hard, you know?",sample_data,,9,en
+14.16,17.06,And it's just kind of irritating.,sample_data,,10,en
+17.06,18.88,"OK, maybe he tries too hard because you",sample_data,,11,en
+18.88,20.52,make zero effort with him.,sample_data,,12,en
+20.52,20.96,You know what?,sample_data,,13,en
+21.02,22.72,"In the 16 years that we've been married,",sample_data,,14,en
+22.72,25.38,have you one time told him that you liked him?,sample_data,,15,en
+26.05,28.66,"Not in those exact words, no.",sample_data,,16,en
+28.66,30.22,"Not in any words, Dad.",sample_data,,17,en
+30.22,31.8,Anything that makes me feel.,sample_data,,18,en
+33.8,36.22,You've never told your son that you love him?,sample_data,,19,en
+36.22,36.8,"Whoa, whoa.",sample_data,,20,en
+36.8,37.88,When did we jump to love?,sample_data,,21,en
+38.92,40.5,And he's technically not my son.,sample_data,,22,en
+40.5,41.14,Huh?,sample_data,,23,en
+41.14,42.98,So that means that you don't love Manny either?,sample_data,,24,en
+42.98,43.98,Sure I do.,sample_data,,25,en
+44.0,46.02,"I mean, believe me, when I was in that park,",sample_data,,26,en
+46.02,47.4,I really wish Manny was there.,sample_data,,27,en
+47.4,48.34,For what?,sample_data,,28,en
+48.34,51.02,So that you could fly the plane into his head?,sample_data,,29,en
+51.02,51.68,Huh?,sample_data,,30,en
+52.64,55.64,"Dad, thanks so much for bringing Phil home.",sample_data,,31,en
+55.64,58.36,I found one of your little flaps in his hair.,sample_data,,32,en
+58.36,58.94,So.,sample_data,,33,en
+61.85,63.87,"Actually, this is called an aileron.",sample_data,,34,en
+63.87,64.71,It controls the horizon.,sample_data,,35,en
+64.71,66.13,Because that's what matters right now.,sample_data,,36,en
+66.89,67.73,"Bye, Dad.",sample_data,,37,en
+78.57,79.13,"Hey, Phil.",sample_data,,38,en
+79.67,80.03,Hey.,sample_data,,39,en
+85.05,86.55,"Oh, you made it to China.",sample_data,,40,en
+88.37,91.61,"Phil, I just want you to know I'm sorry.",sample_data,,41,en
+92.7,95.86,And whether I missed or you moved.,sample_data,,42,en
+95.86,96.46,I didn't.,sample_data,,43,en
+96.46,100.72,"Either way, I just want to say that I like you.",sample_data,,44,en
+100.72,101.34,Really?,sample_data,,45,en
+103.03,103.31,Yeah.,sample_data,,46,en
+103.53,104.93,What do you like about me?,sample_data,,47,en
+108.51,109.71,You're a nice guy.,sample_data,,48,en
+111.11,113.47,Try real hard.,sample_data,,49,en
+114.39,114.91,You do.,sample_data,,50,en
+116.69,117.43,You're a good dad.,sample_data,,51,en
+117.71,118.65,I am a good dad.,sample_data,,52,en
+118.91,119.33,Come here.,sample_data,,53,en
+120.05,120.83,"Come here, you.",sample_data,,54,en
+121.61,121.99,Oh.,sample_data,,55,en
+122.95,124.19,This feels so right.,sample_data,,56,en
+124.29,125.17,Oh.,sample_data,,57,en
+126.89,128.27,What's going on?,sample_data,,58,en
+128.35,130.13,There was a little accident.,sample_data,,59,en
+130.13,132.93,But Jay's telling Phil how much he loves him.,sample_data,,60,en
+133.21,134.81,"Oh, well, that's nice for Phil.",sample_data,,61,en
+134.81,136.43,"That's great, since he's never said anything",sample_data,,62,en
+136.43,137.41,like that to my boyfriend.,sample_data,,63,en
+137.41,138.05,Let it go.,sample_data,,64,en
+138.05,138.99,"No, it's not OK.",sample_data,,65,en

@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 where = ["src"] # From which folder we start to build packages
 
 [project]
-name = "audioandtextbasedspeakerchangedetection"
+name = "audiotextspeakerchangedetect"
 version = "1.0.0" # Set version as fixed
 authors = [
   { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
