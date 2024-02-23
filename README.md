@@ -20,7 +20,7 @@ These human-specified rules are developed by analyzing OpenAI Whisper transcript
 
 Besides text features, audio features are used to detect speaker change via the widely used clustering method, PyAnnotate and Spectral Clustering.
 
-In the end, tge Ensemble Audio-and-text-based Speaker Change Detection Model is built by aggregating predictions across all the speaker change detection models. The voting methods would be used to ensemble the speaker change detection models above except for Rule-based NLP model.
+In the end, the Ensemble Audio-and-text-based Speaker Change Detection Model is built by aggregating predictions across all the speaker change detection models. The voting methods would be used to ensemble the speaker change detection models above except for Rule-based NLP model.
 The predictions would be finally corrected by Rule-based NLP model as final predictions.
 
 ## Create New Python Environment to Avoid Packages Versions Conflict If Needed

@@ -11,7 +11,7 @@ version = "1.0.0" # Set version as fixed
 authors = [
   { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
 ]
-description = "A package to detect speaker change based on textual features via LLMs and Rule-Based NLP"
+description = "A Package to Detect Speaker Change based on Textual Features via LLMs & Rule-Based NLP and Audio Features via Pyannote & Spectral Clustering"
 readme = "README.md"
 requires-python = ">=3.7" # The error would occurs when users install this package on python versions below 3.7
 classifiers = [ # Show basic information of packages
