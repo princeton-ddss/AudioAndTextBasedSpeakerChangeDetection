@@ -7,7 +7,7 @@ where = ["src"] # From which folder we start to build packages
 
 [project]
 name = "audiotextspeakerchangedetect"
-version = "1.0.0" # Set version as fixed
+version = "0.0.1" # Set version as fixed
 authors = [
   { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
 ]
@@ -32,7 +32,7 @@ dependencies=[ # Would automatically install these three packages when we build 
     "pyannote.core==5.0.0",
     "pyannote.database==5.0.1",
     "pyannote.metrics==3.2.1",
-    "pyannote.pipeline==3.0.1"
+    "pyannote.pipeline==3.0.1",
 ]
 
 [project.urls] # Helpful Links Related to Package

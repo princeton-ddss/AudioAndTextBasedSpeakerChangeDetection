@@ -1,5 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10712696.svg)](https://doi.org/10.5281/zenodo.10712696)
+
 ## Audiotextspeakerchangedetect ##
-**Audiotextspeakerchangedetect** is a Python package to detect speaker change by analyzing both audio and text features.
+**[Audiotextspeakerchangedetect](https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection)** is a Python package to detect speaker change by analyzing both audio and text features.
 
 The package develops and applies Large Language Models and the Rule-based NLP Model to detect speaker change based on text features. 
 
@@ -29,7 +31,12 @@ python -m venv <envname>
 source <envname>/bin/activate
 ```
 
-## Install **Audiotextspeakerchangedetect** 
+## Install **Audiotextspeakerchangedetect** using Pypi
+```
+pip install audiotextspeakerchangedetect
+```
+
+## Install **Audiotextspeakerchangedetect** using Github
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
@@ -60,6 +67,7 @@ snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= <downlo
 
 PyAnnotate models are already in the **models** folder of the current repo. 
 
+Please download the models using ```git lfs pull```.
 To use the PyAnnotate models, please replace <local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in **models/pyannote3.1/Diarization/config.yaml** and
 **models/pyannote3.1/Segmentation/config.yaml**.
 

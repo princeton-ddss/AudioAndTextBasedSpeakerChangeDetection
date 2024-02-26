@@ -1,0 +1,24 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'audiotextspeakerchangedetect '
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Junying
+    family-names: Fang
+    email: jf3375@princeton.edu
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.10712695
+repository-code: >-
+  https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
+abstract: >-
+  Audiotextspeakerchangedetect is a Python Package to Detect
+  Speaker Change based on Textual Features via LLMs &
+  Rule-Based NLP and Audio Features via Pyannote & Spectral
+  Clustering
+license: MIT
