@@ -75,8 +75,15 @@ To use the PyAnnotate models, please replace <local_path> with the local parent 
 ## Usage
 The audio-and-text-based ensemble speaker change detection model could be applied to get speaker change detection results by running only one function.
 The function is **run_ensemble_audio_text_based_speaker_change_detection_model** in src/audiotextspeakerchangedetect/main.py.
-Please view the function description inside the Python file.
+
 Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the src/audiotextspeakerchangedetect.
+
+Specifically, detection_models input could be set as a list or sublist of 
+['pyannote', 'clustering', 'nlp', 'llama2-70b']. Device input could be set as None or 'gpu' or 'cpu'. If device is set as None,
+gpu would be used if it is available. Running llama2-70b requires at least 2 gpus and 250GB memory. If the computing resources is not available
+for running llama2-70b, please exclude llama2-70b from detection_models input or replace llama2-70b with llama2-7b.
+
+Please view the detailed function description and its inputs descriptions inside the Python file **src/audiotextspeakerchangedetect/main.py**. 
 ```
 from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 
@@ -87,6 +94,7 @@ run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, m
                                                            llama2_model_path, pyannote_model_path, device,
                                                            detection_llama2_output_path, temp_output_path, ensemble_voting)
 ```
+
 
 ## Models Evaluation Results
 Evaluation Dataset
