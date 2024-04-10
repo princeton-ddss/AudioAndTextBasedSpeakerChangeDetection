@@ -20,7 +20,7 @@ def create_labelling(labels, wav_splits):
     return timestamp_speaker
 
 def spectralclustering_speakerchangedetection(audio_file_input_path, audio_file_input_name,
-                                           min_speakers, max_speakers, device: Union[str, torch.device]=None):
+                                           min_speakers, max_speakers, device: Union[str, torch.device]='cpu'):
     wav = preprocess_wav(os.path.join(audio_file_input_path, audio_file_input_name))
 
     encoder = VoiceEncoder(device)

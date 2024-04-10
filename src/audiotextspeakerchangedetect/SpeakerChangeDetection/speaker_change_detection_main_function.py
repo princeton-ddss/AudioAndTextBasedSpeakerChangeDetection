@@ -15,7 +15,7 @@ from .helpers import merge_detection_audio_results_with_transcription
 def run_speaker_change_detection_models(audio_file_input_path, audio_file_input_name, min_speakers, max_speakers,
                                    transcription_input_path, transcription_input_file_name, detection_models,
                                    detection_output_path, hf_access_token,
-                                   llama2_model_path, pyannote_model_path=None,
+                                   llama2_model_path=None, pyannote_model_path=None,
                                    device: Union[str, torch.device]=None,
                                    detection_llama2_output_path=None, temp_output_path=None):
     '''
@@ -66,12 +66,19 @@ def run_speaker_change_detection_models(audio_file_input_path, audio_file_input_
     
     input_csvfilename = transcription_input_file_name
 
+    # Set max_split_size_mb to reduce memory fregmentation
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
+
+    # Clear memory cache
+    torch.cuda.empty_cache()
+
     # Import whisper output
     whisper_df = pd.read_csv(os.path.join(transcription_input_path, transcription_input_file_name))
     if 'clustering' in detection_models:
+        # Use 'cpu' device here to avoid large gpu memory but low gpu utilization
         # Run detection based on the clustering of sounds
         timestamp_speaker_clustering = spectralclustering_speakerchangedetection(audio_file_input_path, audio_file_input_name,
-                                                   min_speakers, max_speakers, device)
+                                                   min_speakers, max_speakers, 'cpu')
 
         print('finish clustering')
         speakers_clustering, speaker_change_clustering = merge_detection_audio_results_with_transcription(timestamp_speaker_clustering, whisper_df)
