@@ -7,7 +7,7 @@ where = ["src"] # From which folder we start to build packages
 
 [project]
 name = "audiotextspeakerchangedetect"
-version = "0.0.1" # Set version as fixed
+version = "1.1.0" # Set version as fixed
 authors = [
   { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
 ]

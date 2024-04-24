@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10712696.svg)](https://doi.org/10.5281/zenodo.10712696)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10712695.svg)](https://doi.org/10.5281/zenodo.10712695)
 
 ## Audiotextspeakerchangedetect ##
 **[Audiotextspeakerchangedetect](https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection)** is a Python package to detect speaker change by analyzing both audio and textual features.
