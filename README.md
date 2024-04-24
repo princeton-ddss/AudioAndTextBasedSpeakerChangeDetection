@@ -35,12 +35,15 @@ python -m venv <envname>
 source <envname>/bin/activate
 ```
 
-## Install **Audiotextspeakerchangedetect** using Pypi
+## Install the Package
+The package **Audiotextspeakerchangedetect** could be installed either via Pypi or Github.
+
+### Pypi
 ```
 pip install audiotextspeakerchangedetect
 ```
 
-## Install **Audiotextspeakerchangedetect** using Github
+### Github
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
@@ -67,7 +70,7 @@ login(token=<hf_access_token>)
 snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= <download_model_path>)
 ```
 
-### Download PyAnnotate Models using Dropbox Link
+### Download PyAnnote Models using Dropbox Link
 
 To download PyAnnotate models, please download pyannote3.1 folder in this [Dropbox Link](https://www.dropbox.com/scl/fo/tp2uryaq81sze2l0yuxb9/ACgXWOr7Be1ZZovz7xNSuTs?rlkey=9c2z50pjbjhoo3vz4dbxlmlcf&st=fukejg4l&dl=0).
 
