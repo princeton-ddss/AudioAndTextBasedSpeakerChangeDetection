@@ -96,10 +96,38 @@ run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, m
 ```
 
 
-## Models Evaluation Results
-Evaluation Dataset
-Evaluation Metric
-The audio-and-text-based ensemble speaker change detection model 
+## Evaluation
+[VoxConverse Dataset v0.3](https://github.com/joonson/voxconverse?tab=readme-ov-file)
+
+VoxConverse is an only audio-visual diarization dataset consisting of over 50 hours of multispeaker clips of human speech, extracted from YouTube videos, usually in a political debate or news segment context to ensure multi-speaker dialogue.
+The audio files in the dataset have lots of variations of the proportion of speaker changes, which indicates the effectiveness of the dataset as the evaluation dataset to evaluate the models robustness.
+
+Average Coverage, Purity, Precision, and Recall
+
+|           | PyAnnote | Llama2 | Unanimity | Majority | 
+|-----------|----------|--------|-----------|----------|
+| Coverage  | 86%      | 45%    | 59%       | 84%      | 
+| Purity    | 83%      | 89%    | 87%       | 70%      | 
+| Precision | 23%      | 14%    | 24%       | 32%      | 
+| Recall    | 19%      | 32%    | 41%       | 19%      | 
+
+
+[AMI Headset Mix](https://groups.inf.ed.ac.uk/ami/corpus/overview.shtml)
+
+The AMI Meeting Corpus is a multi-modal data set consisting of 100 hours of meeting recordings. Around two-thirds of the data has been elicited using a scenario in which the participants play different roles in a design team, taking a design project from kick-off to completion over the course of a day. The rest consists of naturally occurring meetings in a range of domains.
+Different from VoxConverse Dataset, AMI dataset is not that diverse as it only consists of meeting recording. The median and average proportion of speaker change is both around 78%, and the minimal speaker change is above 59%. Thus, the evaluation analysis based on AMI is more applicable to measure the models performance under regular conversational setting.
+
+Average Coverage, Purity, Precision, and Recall
+
+|           | PyAnnote | Llama2 | Unanimity | Majority | 
+|-----------|----------|--------|-----------|----------|
+| Coverage  | 89%      | 75%    | 80%       | 92%      | 
+| Purity    | 60%      | 65%    | 64%       | 46%      | 
+| Precision | 44%      | 32%    | 40%       | 46%      | 
+| Recall    | 18%      | 18%    | 25%       | 11%      | 
+
+
+For the detailed evaluation analysis, please refer to evaluation_analysis.pdf in the main repo folder.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
