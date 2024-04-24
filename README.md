@@ -67,27 +67,16 @@ login(token=<hf_access_token>)
 snapshot_download(repo_id ='meta-llama/Llama-2-70b-chat-hf',  cache_dir= <download_model_path>)
 ```
 
-### Download PyAnnotate Models using Git Large File Storage (LFS)
+### Download PyAnnotate Models using Dropbox Link
 
-PyAnnotate models are already in the **models** folder of the current repo. 
+To download PyAnnotate models, please download pyannote3.1 folder in this [Dropbox Link](https://www.dropbox.com/scl/fo/tp2uryaq81sze2l0yuxb9/ACgXWOr7Be1ZZovz7xNSuTs?rlkey=9c2z50pjbjhoo3vz4dbxlmlcf&st=fukejg4l&dl=0).
 
-Please download the models using ```git lfs pull```.
-To use the PyAnnotate models, please replace <local_path> with the local parent folder of the downloaded AudioAndTextBasedSpeakerChangeDetection repo in **models/pyannote3.1/Diarization/config.yaml** and
-**models/pyannote3.1/Segmentation/config.yaml**.
-
+To use the PyAnnotate models, please replace <local_path> with the local parent folder of the downloaded pyannote3.1 folder in **pyannote3.1/Diarization/config.yaml** and
+**pyannote3.1/Segmentation/config.yaml**.
 
 ## Usage
 The audio-and-text-based ensemble speaker change detection model could be applied to get speaker change detection results by running only one function.
 The function is **run_ensemble_audio_text_based_speaker_change_detection_model** in src/audiotextspeakerchangedetect/main.py.
-
-Please view the sample codes to run the function in sample_run.py and sample_run_existingllama2output.py in the src/audiotextspeakerchangedetect.
-
-Specifically, detection_models input could be set as a list or sublist of 
-['pyannote', 'clustering', 'nlp', 'llama2-70b']. Device input could be set as None or 'gpu' or 'cpu'. If device is set as None,
-gpu would be used if it is available. Running llama2-70b requires at least 2 gpus and 250GB memory. If the computing resources is not available
-for running llama2-70b, please exclude llama2-70b from detection_models input or replace llama2-70b with llama2-7b.
-
-Please view the detailed function description and its inputs descriptions inside the Python file **src/audiotextspeakerchangedetect/main.py**. 
 ```
 from audiotextspeakerchangedetect.main import run_ensemble_audio_text_based_speaker_change_detection_model
 
@@ -98,6 +87,34 @@ run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, m
                                                            llama2_model_path, pyannote_model_path, device,
                                                            detection_llama2_output_path, temp_output_path, ensemble_voting)
 ```
+Please view the descriptions of the function inputs:
+* detection_models: A list of names of speaker change detection models to be run
+* min_speakers: The minimal number of speakers in the input audio file
+* max_speakers: The maximal number of speakers in the input audio file
+* audio_file_input_path: A path which contains an input audio file
+* audio_file_input_name: A audio file name containing the file type
+* transcription_input_path: A path where a transcription output csv file is saved
+* transcription_file_input_name: A transcription output csv file name ending with .csv
+* detection_output_path: A path to save the speaker change detection output in csv file
+* hf_access_token: Access token to HuggingFace
+* llama2_model_path: A path where the Llama2 model files are saved
+* pyannote_model_path: A path where the Pyannote model files are saved
+* device: Torch device type to run the model, defaults to None so GPU would be automatically
+used if it is available
+* detection_llama2_output_path: A path where the pre-run Llama2 speaker change detection output in csv file
+is saved if exists, default to None
+* temp_output_path: A path to save the current run of Llama2 speaker change detection output
+to avoid future rerunning, default to None
+* ensemble_output_path: A path to save the ensemble detection output in csv file
+* ensemble_voting: A list of voting methods to be used to build the final ensemble model
+
+Please view sample codes to run the function in **sample_run.py** and **sample_run_existingllama2output.py** in the **src/audiotextspeakerchangedetect** folder.
+Please view the detailed function description and its inputs descriptions inside the Python file **src/audiotextspeakerchangedetect/main.py**. 
+
+Please note that running llama2-70b requires at least 2 gpus and 250GB memory. If the computing resources is not available
+for running llama2-70b, please exclude llama2-70b from detection_models input.
+
+
 
 
 ## Evaluation

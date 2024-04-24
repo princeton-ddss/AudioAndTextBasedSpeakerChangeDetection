@@ -33,8 +33,8 @@ def run_ensemble_audio_text_based_speaker_change_detection_model(detection_model
     :type hf_access_token: str
     :param llama2_model_path: A path where the Llama2 model files are saved
     :type llama2_model_path: str
-    :param pyannote_model_path: A path where the Pyannote model files are saved, default to None
-    :type pyannote_model_path: str, optional
+    :param pyannote_model_path: A path where the Pyannote model files are saved
+    :type pyannote_model_path: str
     :param device:Device type to run the model, defaults to None so GPU would be automatically
     used if it is available
     :type: str or torch.device, optional

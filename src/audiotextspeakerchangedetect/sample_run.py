@@ -13,7 +13,7 @@ audio_file_input_name =  'bvyvm.wav'
 transcription_input_path = '/scratch/gpfs/jf3375/test/input'
 transcription_file_input_name = audio_file_input_name.split('.')[0] + '.csv'
 detection_output_path =  '/scratch/gpfs/jf3375/test/output'
-hf_access_token = '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'
+hf_access_token = '<hf_access_token>'
 llama2_model_path = '/scratch/gpfs/jf3375/models/llama'
 pyannote_model_path = "/scratch/gpfs/jf3375/models/pyannote3.1/Diarization"
 device = None  # if set device = None, by default would use gpu if cuda is available, otherwise use gpu
