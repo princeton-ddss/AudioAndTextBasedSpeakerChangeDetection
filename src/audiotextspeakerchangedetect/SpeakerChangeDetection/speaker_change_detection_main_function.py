@@ -109,7 +109,7 @@ def run_speaker_change_detection_models(audio_file_input_path, audio_file_input_
             df_llama2 = llama2_speakerchangedetection(whisper_df, llama2_model_path, llama_model_size)
             # output llama2 results for check
             if temp_output_path:
-                df_llama2.to_csv(os.path.join(temp_output_path, 'llama2_results.csv'), index = False)
+                df_llama2.to_csv(os.path.join(temp_output_path, input_csvfilename), index = False)
 
         # drop duplicates segment id on llama output if the output has
         df_llama2 = df_llama2.drop_duplicates(subset=['segmentid'])
