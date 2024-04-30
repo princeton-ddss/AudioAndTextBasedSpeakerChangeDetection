@@ -38,12 +38,12 @@ source <envname>/bin/activate
 ## Install the Package
 The package **Audiotextspeakerchangedetect** could be installed either via Pypi or Github.
 
-### Pypi
+### Install via Pypi for the Stable Version of THE Package
 ```
 pip install audiotextspeakerchangedetect
 ```
 
-### Github
+### Install via Github Repo for the Latest Version Of the Package
 ```
 git lfs install
 git clone https://github.com/princeton-ddss/AudioAndTextBasedSpeakerChangeDetection
