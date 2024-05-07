@@ -1,14 +1,9 @@
-# Set up prompt
-# Five typical examples are enough for few shot learning
-# ~ 4000 examples are needed for the fine-tuning
-
-systemprompt = """You are the expert of speaker detection. 
+system_prompt = """You are the expert of speaker detection. 
 You are very knowledgable with how people talk to each other.
 You are very proficient in identifying the conversation flow to determine if the speaker changes from the previous segment to next segment.
 """
 
-# Formulate main question in a concise way
-main_question_bgn = """
+instructions_bgn = """
 Question:
 Could you identify if the speaker changes from previous segment to current segment in each part of the following conversation? 
 Please put the answer in the speaker changes section of the json format below.
@@ -46,5 +41,3 @@ Sample Answer:
 ]
 }
 """
-
-
