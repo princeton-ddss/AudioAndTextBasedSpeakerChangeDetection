@@ -16,10 +16,10 @@ from .helpers import merge_detection_audio_results_with_transcription
 
 def run_speaker_change_detection_models(
     audio_file: str,
+    detection_models: list[str],
     min_speakers: int,
     max_speakers: int,
     transcription_file: str,
-    detection_models: list[str],
     output_dir: str,
     hf_access_token: str,
     llama2_model_path: str = None,
@@ -34,10 +34,10 @@ def run_speaker_change_detection_models(
 
     Args:
         audio_file: A path to an input audio file.
+        detection_models: A list of speaker change detection models to run.
         min_speakers: The minimal number of speakers in the input audio file.
         max_speakers: The maximal number of speakers in the input audio file.
         transcription_input_path: A path to a Whisper transcription CSV file.
-        detection_models: A list of speaker change detection models to run.
         output_dir: A path to save the results of speaker change detection models.
         hf_access_token: Access token to HuggingFace.
         llama2_model_path: A path where the Llama2 model files are saved
