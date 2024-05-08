@@ -10,7 +10,7 @@ def run_ensemble_audio_text_based_speaker_change_detection_model(detection_model
                                                            transcription_input_path, transcription_file_input_name,
                                                            detection_output_path,  hf_access_token,
                                                            llama2_model_path, pyannote_model_path, device: Union[str, device]=None,
-                                                           detection_llama2_output_path=None, temp_output_path=None, ensemble_voting = ['majority', 'unanimity']):
+                                                           detection_llama2_output_path=None, temp_output_path=None, ensemble_voting = ['majority', 'single']):
     """The main function to run the ensemble audio-and-text-based speaker change detection model by passing transcription
     files and audio files as inputs
     :param detection_models: A list of names of speaker change detection models to be run
