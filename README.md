@@ -25,7 +25,7 @@ Besides text features, audio features are used to detect speaker change via the 
 In the end, the Ensemble Audio-and-text-based Speaker Change Detection Model is built by aggregating predictions across all the speaker change detection models. 
 Two types of ensemble models are developed based on different methods of ensembling the prediction results of the three models above, Pyannote, Spectral Clustering, and Llama2-70b models.
  * The Majority Model: The ensemble method is majority voting. The Majority model predicts the speaker change as true if the majority of models predict it as true.
- * The Unanimity Model: The ensemble method is unanimity voting. The Unanimity model predicts the speaker change as false only if all models predict it as false. 
+ * The Singularity Model: The ensemble method is singularity voting. The Singularity model predicts the speaker change as true only if any of models predict it as true. 
 
 The ensemble models correct the aggregated predictions using the rule-based NLP analysis to get its final predictions. Specifically, the ensemble model predicts speaker change as true or false if the rule-based NLP analysis predicts that based on rules developed by human comprehension.
 
@@ -128,7 +128,7 @@ The audio files in the dataset have lots of variations of the proportion of spea
 
 Average Coverage, Purity, Precision, and Recall
 
-|           | PyAnnote | Llama2 | Unanimity | Majority | 
+|           | PyAnnote | Llama2 | Singularity | Majority | 
 |-----------|----------|--------|-----------|----------|
 | Coverage  | 86%      | 45%    | 59%       | 84%      | 
 | Purity    | 83%      | 89%    | 87%       | 70%      | 
@@ -143,7 +143,7 @@ Different from VoxConverse Dataset, AMI dataset is not that diverse as it only c
 
 Average Coverage, Purity, Precision, and Recall
 
-|           | PyAnnote | Llama2 | Unanimity | Majority | 
+|           | PyAnnote | Llama2 | Singularity | Majority | 
 |-----------|----------|--------|-----------|----------|
 | Coverage  | 89%      | 75%    | 80%       | 92%      | 
 | Purity    | 60%      | 65%    | 64%       | 46%      | 

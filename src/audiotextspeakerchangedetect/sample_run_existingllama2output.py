@@ -19,7 +19,7 @@ pyannote_model_path = "/scratch/gpfs/jf3375/models/pyannote3.1/Diarization"
 device = None  # if set device = None, by default would use gpu if cuda is available, otherwise use gpu
 detection_llama2_output_path =  '/scratch/gpfs/jf3375/modern_family/output/detection/Llama2/70b' # Existing llama2 output
 temp_output_path = '/scratch/gpfs/jf3375/modern_family/temp'
-ensemble_voting = ['majority', 'single']
+ensemble_voting = ['majority', 'singularity']
 
 run_ensemble_audio_text_based_speaker_change_detection_model(detection_models, min_speakers, max_speakers,
                                                            audio_file_input_path, audio_file_input_name,

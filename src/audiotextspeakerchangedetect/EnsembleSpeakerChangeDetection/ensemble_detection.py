@@ -4,7 +4,7 @@ import pandas as pd
 from .helpers import map_notsure_to_none, map_none_to_nan, use_value_major, map_string_to_bool, aggregate_two_modes
 
 def ensemble_detection(detection_file_input_path, detection_file_input_name, ensemble_output_path,
-                       ensemble_voting = ['majority', 'single']):
+                       ensemble_voting = ['majority', 'singularity']):
     '''
     The main function to build an ensemble model of speaker change detection by using both audio and textual features.
     Specifically, the ensemble model is built by aggregating predictions from various detection models
@@ -35,12 +35,12 @@ def ensemble_detection(detection_file_input_path, detection_file_input_name, ens
         detection_csv['speaker_change_llama2'] = detection_csv['speaker_change_llama2'].apply(
             map_notsure_to_none).apply(map_string_to_bool)
 
-    if 'single' in ensemble_voting:
+    if 'singularity' in ensemble_voting:
         # Ensemble detection results using unanimous voting
         # Only If the ensemble model of all models agrees that the speakerchanges = FALSE, would return ensemble as false and merge sounds
         # e.g.: False or False -> False; True or False -> True
         # Reduce the false positive rate to identify speakerchanges=TURE by avoding merging sounds of different poeple together
-        detection_csv['speaker_change_ensemble_single'] = detection_csv[speaker_change_nonlp_columns].any(axis = 1, skipna = True)
+        detection_csv['speaker_change_ensemble_singularity'] = detection_csv[speaker_change_nonlp_columns].any(axis = 1, skipna = True)
 
     if 'majority' in ensemble_voting:
         # Ensemble detection results using majority voting
