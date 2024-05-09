@@ -15,7 +15,7 @@ In addition to Llama2, the package provides a rule-based NLP correction model th
 Text-based detections can be combined with audio-based detections to improve overall speaker change detection. `AudioTextSpeakerChangeDetect` uses clustering methods provided by `PyAnnote` and `spectralcluster` for audio-based speaker change detection, and ensemble (audio plus text) detection model are built by aggregating predictions across constituent detection models. The package supports the following ensemble methods out-of-the-box:
 
 - **Majority vote**. A speaker change is predicted if _the majority_ of models detect a change.
-- **Single vote**. A speaker change is predicted if _any_ model detects a change.
+- **Singularity vote**. A speaker change is predicted if _any_ model detects a change.
 
 The rule-based NLP correction model is applied to ensemble predictions to obtain final predictions. Specifically, the full model predicts a speaker change if and only if the ensemble model and the rule-based NLP model predict a change.
 
@@ -95,7 +95,7 @@ pyannote_model_path = "~/models/pyannote3.1/Diarization"
 device = None  # use gpu if cuda is available, otherwise use cpu
 detection_llama2_output_path =  None # no existing llama2 output
 temp_output_path = '/tmp'
-ensemble_voting = ['majority', 'single']
+ensemble_voting = ['majority', 'singularity']
 
 run_ensemble_audio_text_based_speaker_change_detection_model(
     detection_models,
@@ -128,7 +128,7 @@ The audio files include a wide range of speaker change frequencies, which makes 
 
 **Table** Average detection performance for the `VoxConverse` dataset.
 
-|           | PyAnnote | Llama2 | Single | Majority |
+|           | PyAnnote | Llama2 | Singularity | Majority |
 | --------- | -------- | ------ |-----------| -------- |
 | Coverage  | 86%      | 45%    | 59%       | 84%      |
 | Purity    | 83%      | 89%    | 87%       | 70%      |
@@ -143,7 +143,7 @@ Relative to the VoxConverse dataset, the AMI is not that diverse as it only cont
 
 **Table** Average detection performance for the `AMI Headset Mix` dataset.
 
-|           | PyAnnote | Llama2 | Single | Majority |
+|           | PyAnnote | Llama2 | Singularity | Majority |
 | --------- | -------- | ------ | --------- | -------- |
 | Coverage  | 89%      | 75%    | 80%       | 92%      |
 | Purity    | 60%      | 65%    | 64%       | 46%      |
