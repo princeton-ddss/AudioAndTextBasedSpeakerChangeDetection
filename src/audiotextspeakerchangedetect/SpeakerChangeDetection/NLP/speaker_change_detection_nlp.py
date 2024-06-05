@@ -6,7 +6,12 @@ def nlp_speakerchangedetection(
     whisper_df: TypeVar('pandas.core.frame.DataFrame'),
     nlp_model: Language
 ):
-    """Perform speaker change detection using Rule-based NLP"""
+    """
+    Perform speaker change detection using Rule-based NLP
+    Args:
+        whisper_df: the pandas dataframe of whisper transcriptions
+        nlp_model: the loaded spacy nlp model
+    """
 
     speaker_changes = ["NotSure"] * whisper_df.shape[0]
     text_segments = list(whisper_df["text"])
