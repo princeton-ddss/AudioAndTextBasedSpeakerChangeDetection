@@ -19,7 +19,8 @@ def run_speaker_change_detection_models(
     detection_models: list[str],
     min_speakers: int,
     max_speakers: int,
-    transcription_file: str,
+    transcription_dir: str,
+    transcription_fname: str,
     output_dir: str,
     hf_access_token: str,
     llama2_model_path: str = None,
@@ -30,14 +31,15 @@ def run_speaker_change_detection_models(
 ):
     """Run speaker change detection models on an input audio file.
 
-    Detailed explaination here...
+    The main function to run speaker change detection models based on user inputs
 
     Args:
         audio_file: A path to an input audio file.
         detection_models: A list of speaker change detection models to run.
         min_speakers: The minimal number of speakers in the input audio file.
         max_speakers: The maximal number of speakers in the input audio file.
-        transcription_input_path: A path to a Whisper transcription CSV file.
+        transcription_dir: A directory to a Whisper transcription csv file.
+        transcription_fname: A Whisper transcription csv file name.
         output_dir: A path to save the results of speaker change detection models.
         hf_access_token: Access token to HuggingFace.
         llama2_model_path: A path where the Llama2 model files are saved
@@ -59,10 +61,10 @@ def run_speaker_change_detection_models(
     # Set max_split_size_mb to reduce memory fregmentation
     os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
 
-    # TODO: A comment about why this is needed...
+    # Empty cache to reduce memory overhead
     torch.cuda.empty_cache()
 
-    whisper_df = pd.read_csv(transcription_file)
+    whisper_df = pd.read_csv(os.path.join(transcription_dir, transcription_fname))
 
     if "clustering" in detection_models:
         print("Running clustering-based speaker detection...")
@@ -106,28 +108,33 @@ def run_speaker_change_detection_models(
         )
         print("Done!")
     if llama2_models:
-        llama2_model = llama2_models[0]
-        # TODO: validate llama2_model string
-        llama_model_size = llama2_model.split("-")[-1]
+        llama_model_size = llama2_models[0].split("-")[-1]
+        if not llama_model_size in ["7b", "13b", "70b"]:
+            raise Exception(
+                f"Llama2 model string format is not correct."
+            )
         if llama2_output:
             print(f"Using provided Llama2 output: {llama2_output}")
             df_llama2 = pd.read_csv(llama2_output)
         else:
             print("Running LLama2-based speaker change detection...")
-            # TODO: check that llama2_model_path is not None
+            if not os.path.exists(llama2_model_path):
+                raise Exception(
+                    f"The local path of the Llama2 model does not exist."
+                )
             df_llama2 = llama2_speakerchangedetection(
                 whisper_df, llama2_model_path, llama_model_size
             )
             print("Done!")
             if tmp_dir:
-                print(f"Writing Llama2 results to {tmp_dir}/{transcription_file}")
-                df_llama2.to_csv(os.path.join(tmp_dir, transcription_file), index=False)
+                print(f"Writing Llama2 results to {tmp_dir}/{transcription_fname}")
+                df_llama2.to_csv(os.path.join(tmp_dir, transcription_fname), index=False)
 
         df_llama2 = df_llama2.drop_duplicates(subset=["segmentid"])
         df_llama2 = df_llama2.drop(columns="text")
         df_llama2["segmentid"] = df_llama2["segmentid"].astype(int)
         whisper_df = pd.merge(whisper_df, df_llama2, on="segmentid", how="left")
 
-    print(f"Writing results to {output_dir}/{transcription_file}")
-    whisper_df.to_csv(os.path.join(output_dir, transcription_file), index=False)
+    print(f"Writing results to {output_dir}/{transcription_fname}")
+    whisper_df.to_csv(os.path.join(output_dir, transcription_fname), index=False)
     return whisper_df
