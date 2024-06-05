@@ -3,15 +3,29 @@ import json
 import pandas as pd
 import os
 import torch
+from typing import TypeVar
 
-from .huggingface_offline.LLaMA_HuggingFace_Offline import get_full_prompt, setup_LLaMA_model_tokenizer
+from .huggingface_offline.LLaMA_HuggingFace_Offline import setup_llama_tokenizer
 
-from .prompts.prompt1 import systemprompt, main_question_bgn, examples
-from .prompts.prompt1_template import get_main_question
+from .prompts.generators import get_instructions, get_full_prompt
 
-def llama2_speakerchangedetection(whisper_df,
-                          llama_model_path, llama_model_size='70b', device_map ='auto', torch_dtype = torch.float16, get_full_prompt=get_full_prompt,
-                           systemprompt=systemprompt, main_question_bgn=main_question_bgn, examples=examples, get_main_question=get_main_question):
+def llama2_speakerchangedetection(whisper_df:TypeVar('pandas.core.frame.DataFrame'),
+    llama_model_path:str, llama_model_size: str,
+    system_prompt: str, instructions_bgn: str, samples: str,
+    device_map:str ='auto', torch_dtype:str = torch.float16,
+):
+    """
+    The main function to run Llama2 to perform speaker change detection
+    Please refer to the example of system_prompt, instructions_bgn, and samples from prompts/template.py
+    Args:
+        llama_model_path: the path to llama2 model
+        llama_model_size: the size of llama2 model
+        system_prompt: the system prompt
+        instructions_bgn: the main question
+        samples: sample question and answers
+        device_map: device to run the model
+        torch_dtype: the dtype of the model uses
+    """
 
     # set llama_model_folder_name based on llama_model_size
     llama_model_size_local_folder_name = 'models--meta-llama--Llama-2-{}-chat-hf/snapshots'.format(llama_model_size)
@@ -27,7 +41,7 @@ def llama2_speakerchangedetection(whisper_df,
     llama_model_size_local_folder = os.path.join(llama_model_size_local_folder_name, snapshot_id)
 
     # Load Llama model
-    tokenizer, pipeline = setup_LLaMA_model_tokenizer(llama_model_path, llama_model_size_local_folder, device_map, torch_dtype)
+    tokenizer, pipeline = setup_llama_tokenizer(llama_model_path, llama_model_size_local_folder, device_map, torch_dtype)
 
     # Set parameters of the model to get deterministic response
     # The input includes the question itself; Need to set up max_length long enough so all the answers would return
@@ -38,7 +52,7 @@ def llama2_speakerchangedetection(whisper_df,
 
     # Need to cut dataframe to ensure that the input text length does not exceed maximum tokens
     # Since token is not equal to the number of words, would divide max_length by 2 to ensure the buffer
-    dataframe_segment_maxstrings = max_length - len(main_question_bgn) - len(examples)
+    dataframe_segment_maxstrings = max_length - len(instructions_bgn) - len(samples)
 
     start_rowidx = 0
     total_num_strings = 0
@@ -56,11 +70,11 @@ def llama2_speakerchangedetection(whisper_df,
             seg_num_strings = 0
 
             # Pass the text inputs into the Llama2 model
-            main_question = get_main_question(whisper_df_cut,
-                                              main_question_bgn=main_question_bgn,
-                                              examples=examples)
+            main_question = get_instructions(whisper_df_cut,
+                                              main_question_bgn=instructions_bgn,
+                                              samples=samples)
 
-            full_prompt = get_full_prompt(systemprompt, main_question)
+            full_prompt = get_full_prompt(system_prompt, main_question)
             print('full prompt')
             print(full_prompt)
 

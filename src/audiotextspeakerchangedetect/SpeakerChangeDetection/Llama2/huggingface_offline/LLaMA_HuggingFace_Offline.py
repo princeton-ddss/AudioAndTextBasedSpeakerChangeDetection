@@ -12,10 +12,16 @@ from transformers import AutoModelForCausalLM
 
 def setup_llama_tokenizer(
     model_dir: str,
-    device_map="0",
-    torch_dtype=torch.float16
+    device_map: str ="0",
+    torch_dtype: torch.FloatTensor = torch.float16
 ):
-    """..."""
+    """
+    The function to import Llama2 model offline
+    Args:
+        model_dir: directory containing Llama model
+        device_map: device to run Llama model
+        torch_dtype: dtype to run Llama model
+    """
 
     # Use a single GPU (device=0) by default
     if device_map != "auto":

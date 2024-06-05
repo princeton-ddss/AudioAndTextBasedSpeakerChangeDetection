@@ -11,7 +11,7 @@ Please do not include any additional information besides the answer in the same 
 Please double check to ensure that the answer is in the correct json format which is the same as previous answer.
 """
 
-examples = """
+samples = """
 Sample Question:
 Could you identify if the speaker changes from previous segment to current segment in each part of the following conversation? 
 Please put the answer in the speaker changes section of the json format below.

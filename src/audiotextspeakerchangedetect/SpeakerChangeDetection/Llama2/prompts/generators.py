@@ -1,56 +1,46 @@
-INST = ("[INST]",)
-E_INST = "[/INST]"
-SYS = "<<SYS>>\n"
-E_SYS = "\n<</SYS>>\n\n"
-SEN = "<s>"
-EN_SEN = "<\s>"
+from typing import TypeVar
 
-
-def get_full_prompt(
-    system_prompt: str,
-    instructions: str,
-    questions_answers_dict: dict = None,
-):
-    """..."""
-
-    if not questions_answers_dict:  # No few-shot learning
-        full_prompt = (
-            SEN + INST + SYS + system_prompt + E_SYS + instructions + E_INST + EN_SEN
-        )
+def get_full_prompt(systemprompt:str,  main_question:str, questions_answers_dict = None,
+                    INST: str = '[INST]', E_INST: str = '[/INST]',
+                    SYS: str = '<<SYS>>\n', E_SYS: str = '\n<</SYS>>\n\n',
+                    SEN: str = '<s>', EN_SEN:str = '<\s>'):
+    """
+    Generate the general prompt of Llama2 following the official format
+    Args:
+        systemprompt: the system prompt
+        main_question: the main question
+        questions_answers_dict: the examples for few shot learning
+    """
+    if not questions_answers_dict: # No few-shot learning
+        full_prompt =   SEN + INST + \
+                        SYS + systemprompt + E_SYS + \
+                        main_question + E_INST + EN_SEN
     else:
         questions = list(questions_answers_dict.keys())
-        full_prompt = (
-            SEN
-            + INST
-            + SYS
-            + system_prompt
-            + E_SYS
-            + questions[0]
-            + E_INST
-            + questions_answers_dict[questions[0]]
-            + EN_SEN
-        )
-        for question in questions[1:]:
-            full_prompt += (
-                SEN
-                + INST
-                + question
-                + E_INST
-                + questions_answers_dict[question]
-                + EN_SEN
-            )
-        full_prompt += SEN + INST + instructions + E_INST
+        full_prompt =   SEN + INST + \
+                        SYS + systemprompt + E_SYS + \
+                        questions[0] + E_INST + \
+                        questions_answers_dict[questions[0]] + EN_SEN
 
+        for question in questions[1:]:
+            full_prompt += SEN + INST + question + E_INST + questions_answers_dict[question] + EN_SEN
+
+        full_prompt += SEN + INST + main_question + E_INST
     return full_prompt
 
 
 def get_instructions(
-    # TODO: add type hints
-    whisper_df_cut,
-    instructions_bgn,
-    examples=None,
+    whisper_df_cut:TypeVar('pandas.core.frame.DataFrame'),
+    instructions_bgn:str,
+    samples:str = None,
 ):
-    """..."""
+    """
+    Generate the instructions to Llama2 to perform speaker change detection on transcriptions inputs
+    Args:
+        whisper_df_cut: The subset of whole whisper dataframe to not exceed the prompt length limit
+        instructions_bgn: The main question
+        samples: Sample question and answers
+    """
 
     whisper_data = '{"conversation":[\n'
     segment_ids = list(whisper_df_cut["segmentid"])
@@ -65,6 +55,6 @@ def get_instructions(
     whisper_data += "]\n}"
 
     instructions = instructions_bgn + "\n" + whisper_data + "\n" + "Answer:"
-    if examples:
-        instructions = examples + "\n" + instructions
+    if samples:
+        instructions = samples + "\n" + instructions
     return instructions
