@@ -28,7 +28,9 @@ def map_string_to_bool(x):
         elif x.lower() == "false":
             return False
         else:
-            raise NotImplementedError
+            raise Exception(
+                    f"The input string value is not true or false"
+                )
     else:
         return x
 
