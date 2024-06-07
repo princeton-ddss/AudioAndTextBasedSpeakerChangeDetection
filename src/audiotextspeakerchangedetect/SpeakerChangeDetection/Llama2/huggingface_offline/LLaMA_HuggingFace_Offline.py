@@ -21,6 +21,9 @@ def setup_llama_tokenizer(
         model_dir: directory containing Llama model
         device_map: device to run Llama model
         torch_dtype: dtype to run Llama model
+    Returns:
+        tokenizer: the tokenizer used by llama2
+        pipeline: the main llama2 model pipeline
     """
 
     # Use a single GPU (device=0) by default

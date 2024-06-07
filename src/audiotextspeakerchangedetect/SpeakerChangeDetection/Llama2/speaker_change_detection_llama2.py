@@ -25,6 +25,8 @@ def llama2_speakerchangedetection(whisper_df:TypeVar('pandas.core.frame.DataFram
         samples: sample question and answers
         device_map: device to run the model
         torch_dtype: the dtype of the model uses
+    Returns:
+        results_all_df: the transcription dataframe with speaker change detection results from llama2
     """
 
     # set llama_model_folder_name based on llama_model_size

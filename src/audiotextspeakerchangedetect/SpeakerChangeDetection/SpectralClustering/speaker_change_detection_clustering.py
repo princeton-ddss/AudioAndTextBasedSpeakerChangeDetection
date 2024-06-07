@@ -19,12 +19,23 @@ def create_labelling(labels, wav_splits):
 
 
 def spectralclustering_speakerchangedetection(
-    audio_file,
-    min_speakers,
-    max_speakers,
-    device: Union[str, torch.device] = "gpu",
+    audio_file:str,
+    min_speakers:int,
+    max_speakers:int,
+    device:Union[str, torch.device]
 ):
-    """..."""
+    """
+    The function to run speaker change detection using spectral clustering
+
+    Args:
+        audio_file: the audio file name
+        min_speakers: the minimum number of speakers in the audio file
+        max_speakers: the maximum number of speakers in the audio file
+        device: device to run the models
+
+    Returns:
+        labeled_timestamps: the dictionary with timestamps as keys and their corresponding speakers as values
+    """
 
     wav = preprocess_wav(audio_file)
     encoder = VoiceEncoder(device)

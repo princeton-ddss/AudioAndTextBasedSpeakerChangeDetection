@@ -11,6 +11,8 @@ def nlp_speakerchangedetection(
     Args:
         whisper_df: the pandas dataframe of whisper transcriptions
         nlp_model: the loaded spacy nlp model
+    Returns:
+        speaker_changes: the list of true or false to indicate speaker changes
     """
 
     speaker_changes = ["NotSure"] * whisper_df.shape[0]

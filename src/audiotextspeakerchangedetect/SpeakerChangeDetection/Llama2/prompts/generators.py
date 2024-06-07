@@ -10,6 +10,8 @@ def get_full_prompt(systemprompt:str,  main_question:str, questions_answers_dict
         systemprompt: the system prompt
         main_question: the main question
         questions_answers_dict: the examples for few shot learning
+    Returns:
+        full_prompt: the full prompt to llama2 with few shot learning if examples are provided in the inputs
     """
     if not questions_answers_dict: # No few-shot learning
         full_prompt =   SEN + INST + \
@@ -40,6 +42,8 @@ def get_instructions(
         whisper_df_cut: The subset of whole whisper dataframe to not exceed the prompt length limit
         instructions_bgn: The main question
         samples: Sample question and answers
+    Returns:
+        instructions: the complete instructions string with the input text segments and samples
     """
 
     whisper_data = '{"conversation":[\n'

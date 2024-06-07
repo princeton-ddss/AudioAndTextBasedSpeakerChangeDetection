@@ -49,7 +49,7 @@ def run_speaker_change_detection_models(
         tmp_dir: A path to save the current run of Llama2 speaker change detection results.
 
     Returns:
-        None
+        whisper_df: the transcription dataframe with speaker change detection results
     """
 
     llama2_models = [x for x in detection_models if x.startswith("llama2")]
@@ -110,25 +110,23 @@ def run_speaker_change_detection_models(
     if llama2_models:
         llama_model_size = llama2_models[0].split("-")[-1]
         if not llama_model_size in ["7b", "13b", "70b"]:
-            raise Exception(
-                f"Llama2 model string format is not correct."
-            )
+            raise Exception(f"Llama2 model string format is not correct.")
         if llama2_output:
             print(f"Using provided Llama2 output: {llama2_output}")
             df_llama2 = pd.read_csv(llama2_output)
         else:
             print("Running LLama2-based speaker change detection...")
             if not os.path.exists(llama2_model_path):
-                raise Exception(
-                    f"The local path of the Llama2 model does not exist."
-                )
+                raise Exception(f"The local path of the Llama2 model does not exist.")
             df_llama2 = llama2_speakerchangedetection(
                 whisper_df, llama2_model_path, llama_model_size
             )
             print("Done!")
             if tmp_dir:
                 print(f"Writing Llama2 results to {tmp_dir}/{transcription_fname}")
-                df_llama2.to_csv(os.path.join(tmp_dir, transcription_fname), index=False)
+                df_llama2.to_csv(
+                    os.path.join(tmp_dir, transcription_fname), index=False
+                )
 
         df_llama2 = df_llama2.drop_duplicates(subset=["segmentid"])
         df_llama2 = df_llama2.drop(columns="text")
