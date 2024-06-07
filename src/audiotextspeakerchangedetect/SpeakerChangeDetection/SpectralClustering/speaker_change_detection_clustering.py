@@ -1,6 +1,5 @@
 from typing import Union
 import torch
-import os
 from resemblyzer import preprocess_wav, VoiceEncoder, sampling_rate
 from spectralcluster import SpectralClusterer
 

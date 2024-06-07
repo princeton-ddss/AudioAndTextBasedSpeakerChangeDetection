@@ -1,20 +1,20 @@
 from bisect import bisect_left
+from typing import TypeVar
 
 
 def merge_detection_audio_results_with_transcription(
-    # TODO: add type hints
-    timestamp_speaker,
-    whisper_df,
+    timestamp_speaker: dict,
+    whisper_df:TypeVar('pandas.core.frame.DataFrame'),
 ):
-    """Append speaker change detection results with transcription results.
+    """Merge speaker change detection results with transcription results.
 
     Args:
-        timestamp_speaker: ...
-        whisper_df: ...
+        timestamp_speaker: the dictionary with timestamp as keys and speaker ids as values
+        whisper_df: the pandas dataframe of whisper transcription results
 
     Returns:
-        speakers: ...
-        speaker_changes: ...
+        speakers: the list of speakers for each transcription part
+        speaker_changes: the list of true or false to indicate if the speaker changes at each transcription part
     """
 
     timestamps = list(timestamp_speaker.keys())
