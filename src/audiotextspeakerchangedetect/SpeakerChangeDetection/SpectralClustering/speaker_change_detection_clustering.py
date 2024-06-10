@@ -1,5 +1,6 @@
 from typing import Union
 import torch
+import os
 from resemblyzer import preprocess_wav, VoiceEncoder, sampling_rate
 from spectralcluster import SpectralClusterer
 
@@ -19,16 +20,18 @@ def create_labelling(labels, wav_splits):
 
 
 def spectralclustering_speakerchangedetection(
-    audio_file:str,
-    min_speakers:int,
-    max_speakers:int,
-    device:Union[str, torch.device]
+    audio_fdir: str,
+    audio_fname: str,
+    min_speakers: int,
+    max_speakers: int,
+    device: Union[str, torch.device],
 ):
     """
     The function to run speaker change detection using spectral clustering
 
     Args:
-        audio_file: the audio file name
+        audio_fdir: the audio file dir
+        audio_fname: the audio file name
         min_speakers: the minimum number of speakers in the audio file
         max_speakers: the maximum number of speakers in the audio file
         device: device to run the models
@@ -37,7 +40,7 @@ def spectralclustering_speakerchangedetection(
         labeled_timestamps: the dictionary with timestamps as keys and their corresponding speakers as values
     """
 
-    wav = preprocess_wav(audio_file)
+    wav = preprocess_wav(os.path.join(audio_fdir, audio_fname))
     encoder = VoiceEncoder(device)
     _, cont_embeds, wav_splits = encoder.embed_utterance(
         wav, return_partials=True, rate=16

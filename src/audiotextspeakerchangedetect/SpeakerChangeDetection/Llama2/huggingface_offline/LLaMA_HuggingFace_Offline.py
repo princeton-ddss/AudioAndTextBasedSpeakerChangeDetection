@@ -12,8 +12,8 @@ from transformers import AutoModelForCausalLM
 
 def setup_llama_tokenizer(
     model_dir: str,
-    device_map: str ="0",
-    torch_dtype: torch.FloatTensor = torch.float16
+    device_map: str = "0",
+    torch_dtype: torch.FloatTensor = torch.float16,
 ):
     """
     The function to import Llama2 model offline
