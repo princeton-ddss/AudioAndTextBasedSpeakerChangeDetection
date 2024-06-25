@@ -9,17 +9,17 @@ where = ["src"] # From which folder we start to build packages
 name = "audiotextspeakerchangedetect"
 version = "1.3.0" # Set version as fixed
 authors = [
-  { name="Junying (Alice) Fang", email="jf3375@princeton.edu" },
+    { name = "Junying (Alice) Fang", email = "jf3375@princeton.edu" },
 ]
 description = "A Package to Detect Speaker Change based on Textual Features via LLMs & Rule-Based NLP and Audio Features via Pyannote & Spectral Clustering"
 readme = "README.md"
 requires-python = ">=3.7" # The error would occurs when users install this package on python versions below 3.7
-classifiers = [ # Show basic information of packages
+classifiers = [# Show basic information of packages
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies=[ # Would automatically install these three packages when we build and install our package using pip install -e .
+dependencies = [# Would automatically install these three packages when we build and install our package using pip install -e .
     "accelerate",
     "torch",
     "torchvision",
@@ -28,6 +28,7 @@ dependencies=[ # Would automatically install these three packages when we build 
     "resemblyzer",
     "spectralcluster",
     "transformers",
+    "pytest",
     "pyannote.audio==3.1.1",
     "pyannote.core==5.0.0",
     "pyannote.database==5.0.1",
